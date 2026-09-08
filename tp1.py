@@ -6,20 +6,18 @@ def inicializar_juego(n, valor_min=1, valor_max=10):
     return monedas
 
 
-def elegir_y_remover_moneda(fila, turno_sofia):
-    if len(fila) == 1:
-        return fila.pop()
+def elegir_moneda(fila, inicio, fin, turno_sofia):
 
     if turno_sofia:
-        if fila[0] >= fila[-1]:
-            return fila.pop(0)
+        if fila[inicio] >= fila[fin]:
+            return fila[inicio], inicio + 1, fin
         else:
-            return fila.pop()
+            return fila[fin], inicio, fin - 1
     else:
-        if fila[0] <= fila[-1]:
-            return fila.pop(0)
+        if fila[inicio] <= fila[fin]:
+            return fila[inicio], inicio + 1, fin
         else:
-            return fila.pop()
+            return fila[fin], inicio, fin - 1 
 
 
 def jugar(cant_monedas):
@@ -28,8 +26,11 @@ def jugar(cant_monedas):
     valor_mateo = 0
     turno_sofia = True
 
-    while len(fila) > 0:
-        moneda = elegir_y_remover_moneda(fila, turno_sofia)
+    inicio = 0
+    fin = len(fila) - 1
+
+    while inicio <= fin:
+        moneda, inicio, fin = elegir_moneda(fila, inicio, fin, turno_sofia)
 
         if turno_sofia:
             valor_sofia += moneda
@@ -44,3 +45,4 @@ def jugar(cant_monedas):
         return "Gano Mateo"
     else:
         return "Empate"
+
