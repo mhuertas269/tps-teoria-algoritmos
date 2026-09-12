@@ -13,9 +13,9 @@ def cargar_monedas(ruta_archivo):
 
 def elegir_moneda(fila, inicio, fin, turno_sofia):
     if turno_sofia:
-        return "Primera" if fila[inicio] >= fila[fin] else "Última"
+        return "Primera" if fila[inicio] >= fila[fin] else "Ultima"
     else:
-        return "Primera" if fila[inicio] <= fila[fin] else "Última"
+        return "Primera" if fila[inicio] <= fila[fin] else "Ultima"
 
 
 def jugar(fila):
