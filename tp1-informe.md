@@ -2,9 +2,9 @@
 
 En un juego tradicional, en el que cada jugador decide qué moneda tomar en su turno, Sophia no podría determinar de antemano las elecciones de Mateo y para garantizar su victoria debería considerar las posibles decisiones de su oponente y las diferentes secuencias de elecciones que podrían producirse. Sin embargo, en este problema Sophia controla las elecciones de ambos jugadores, lo que le permite utilizar una estrategia greedy basada únicamente en los valores de las monedas disponibles en los extremos.
 
-La estrategia consiste en que, cuando llega el turno de Sophia, elige para sí misma la moneda de mayor valor entre las dos disponibles en los extremos. Cuando llega el turno de Mateo, Sophia elige para él la moneda de menor valor entre los dos extremos disponibles.
+La estrategia consiste en que, cuando llega el turno de Sophia, elige para sí misma la moneda de mayor valor entre las dos disponibles en los extremos. Cuando llega el turno de Mateo, Sophia elige para él la moneda de menor valor entre los dos extremos disponibles. De esta manera, en cada ronda se toma una decisión local, sin analizar las elecciones que podrían realizarse en las rondas posteriores: Sophia maximiza su beneficio inmediato y, al mismo tiempo, minimiza el beneficio inmediato de Mateo.
 
-Esta estrategia tiene una propiedad fundamental: en cada ronda, la moneda que recibe Mateo tiene un valor menor o igual que la moneda que recibió Sophia inmediatamente antes.
+La elección local resulta suficiente para alcanzar el objetivo global del problema, que es garantizar que el puntaje de Sophia sea estrictamente mayor que el de Mateo. Para justificar esto, podemos observar que la estrategia tiene una propiedad fundamental: en cada ronda, la moneda que recibe Mateo tiene un valor menor o igual que la moneda que recibió Sophia inmediatamente antes.
 
 Para demostrarlo, supongamos que al comienzo de una ronda la fila es:
 [a,b,c,d]
