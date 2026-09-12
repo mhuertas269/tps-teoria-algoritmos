@@ -1,6 +1,7 @@
 import time
 import numpy as np
 from tp1 import jugar
+import random
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 
@@ -9,10 +10,10 @@ def medir_tiempo(n, repeticiones=10):
     tiempos = []
 
     for _ in range(repeticiones):
+        fila = [random.randint(1, 1000) for _ in range(n)]
+
         inicio = time.perf_counter()
-
-        jugar(n)
-
+        jugar(fila)
         fin = time.perf_counter()
 
         tiempos.append(fin - inicio)
@@ -25,9 +26,22 @@ def funcion_lineal(n, c1, c2):
 
 
 tamaños = [
-    1000, 5000, 10000, 15000, 20000,
-    25000, 30000, 35000, 40000, 45000,
-    50000, 60000, 70000, 80000, 90000, 100000
+    1000,
+    5000,
+    10000,
+    15000,
+    20000,
+    25000,
+    30000,
+    35000,
+    40000,
+    45000,
+    50000,
+    60000,
+    70000,
+    80000,
+    90000,
+    100000,
 ]
 
 tiempos = []
@@ -36,7 +50,7 @@ for n in tamaños:
     tiempo = medir_tiempo(n)
     tiempos.append(tiempo)
     print(n, tiempo)
-    
+
 # Ajuste por cuadrados mínimos
 
 parametros, _ = curve_fit(funcion_lineal, tamaños, tiempos)
@@ -52,9 +66,7 @@ tiempos_ajustados = funcion_lineal(np.array(tamaños), c1, c2)
 
 # Error cuadrático total
 
-error_cuadratico = np.sum(
-    (tiempos_ajustados - np.array(tiempos)) ** 2
-)
+error_cuadratico = np.sum((tiempos_ajustados - np.array(tiempos)) ** 2)
 
 print("Error cuadrático total:", error_cuadratico)
 
@@ -74,9 +86,7 @@ plt.savefig("mediciones_ajuste.png")
 
 # Gráfico del error
 
-errores = np.abs(
-    tiempos_ajustados - np.array(tiempos)
-)
+errores = np.abs(tiempos_ajustados - np.array(tiempos))
 
 plt.figure()
 
