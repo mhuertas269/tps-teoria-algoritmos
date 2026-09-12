@@ -30,16 +30,16 @@ A partir del análisis teórico se determinó que la complejidad temporal del al
 Dado que el análisis teórico indica un comportamiento lineal, se utilizó el modelo T(n)=c1n+c2 y se obtuvo mediante el método de cuadrados mínimos la recta que mejor se ajusta a las mediciones.
 
 En la ejecución realizada se obtuvieron los parámetros:
-c1 = 5.231731844412835e-07
+c1 = 3.223812654606917e-07
 c2 = 0.0005992163652310811
 dando como resultado el siguiente ajuste: 
-T(n)=5.231731844412835e-07n+ 0.0005992163652310811
+T(n)=3.223812654606917e-07n - 0.0004533503429140495
 
 [Gráfico: mediciones-ajuste.png]
 
 Como puede observarse en el gráfico, los tiempos medidos presentan un comportamiento aproximadamente lineal y se encuentran próximos a la recta obtenida mediante el ajuste.
 
-También se calculó el error cuadrático total del ajuste, cuyo valor fue \(4.91\times10^{-6}\). El gráfico de error absoluto muestra la diferencia entre cada tiempo medido y el tiempo estimado por el modelo lineal. Las diferencias observadas son pequeñas en comparación con el crecimiento general de los tiempos, aunque existen algunas mediciones con un error mayor.
+También se calculó el error cuadrático total del ajuste, cuyo valor fue \(1.30\times10^{-5}\). El gráfico de error absoluto muestra la diferencia entre cada tiempo medido y el tiempo estimado por el modelo lineal. Las diferencias observadas son pequeñas en comparación con el crecimiento general de los tiempos, aunque existen algunas mediciones con un error mayor.
 
 [Gráfico: error-cuadrático.png]
 
