@@ -2,24 +2,24 @@
 
 En un juego tradicional, en el que cada jugador decide qué moneda tomar en su turno, Sophia no podría determinar de antemano las elecciones de Mateo y para garantizar su victoria debería considerar las posibles decisiones de su oponente y las diferentes secuencias de elecciones que podrían producirse. Sin embargo, en este problema Sophia controla las elecciones de ambos jugadores, lo que le permite utilizar una estrategia greedy basada únicamente en los valores de las monedas disponibles en los extremos.
 
-La estrategia consiste en que, cuando llega el turno de Sophia, elige para sí misma la moneda de mayor valor entre las dos disponibles en los extremos. Cuando llega el turno de Mateo, Sophia elige para él la moneda de menor valor entre los dos extremos disponibles.
+La estrategia consiste en que, cuando llega el turno de Sophia, elige para sí misma la moneda de mayor valor entre las dos disponibles en los extremos. Cuando llega el turno de Mateo, Sophia elige para él la moneda de menor valor entre los dos extremos disponibles. De esta manera, en cada ronda se toma una decisión local, sin analizar las elecciones que podrían realizarse en las rondas posteriores: Sophia maximiza su beneficio inmediato y, al mismo tiempo, minimiza el beneficio inmediato de Mateo.
 
-Esta estrategia tiene una propiedad fundamental: en cada ronda, la moneda que recibe Mateo tiene un valor menor o igual que la moneda que recibió Sophia inmediatamente antes.
+La elección local resulta suficiente para alcanzar el objetivo global del problema, que es garantizar que el puntaje de Sophia sea estrictamente mayor que el de Mateo. Para justificar esto, podemos observar que la estrategia tiene una propiedad fundamental: en cada ronda, la moneda que recibe Mateo tiene un valor menor o igual que la moneda que recibió Sophia inmediatamente antes.
 
 Para demostrarlo, supongamos que al comienzo de una ronda la fila es:
 [a,b,c,d]
 Sophia puede elegir entre a y d. Supongamos que:
-d >= a 
+d >= a
 Sophia elige d. Luego, la fila queda:
 [a,b,c]
 Mateo puede elegir entre a y c, pero Sophia controla su elección y le asigna la moneda de menor valor, o lo que es igual: min(a,c)
-Como: min(a,c) <= a <= d se cumple que la moneda recibida por Mateo tiene un valor menor o igual que la moneda que recibió Sophia en esa ronda.
+Como min(a,c) <= a <= d se cumple que la moneda recibida por Mateo tiene un valor menor o igual que la moneda que recibió Sophia en esa ronda.
 
-Este mismo razonamiento se aplica en cada ronda del juego. Por lo tanto, si agrupamos las elecciones de Sophia y Mateo de a pares, se cumple: moneda de Mateo <= moneda de Sophia en cada par de turnos. Al sumar estas desigualdades para todas las rondas, obtenemos: valor total de Mateo <= valor total de Sophia
+Este mismo razonamiento se aplica en cada ronda del juego. Por lo tanto, si agrupamos las elecciones de Sophia y Mateo de a pares, se cumple: moneda de Mateo <= moneda de Sophia en cada par de turnos. Al sumar estas desigualdades para todas las rondas, obtenemos: valor total de Mateo <= valor total de Sophia.
 
 Por lo tanto, la estrategia garantiza que Sophia nunca obtiene un puntaje menor que Mateo.
 
-Puede existir un empate cuando, en todas las rondas, la moneda asignada a Mateo tiene el mismo valor que la moneda elegida por Sophia. Sin embargo, el enunciado indica que se desestime el caso particular en el que hay una cantidad par de monedas de igual valor, ya que en esa situación ambos jugadores reciben la misma cantidad de monedas del mismo valor y el empate se produce independientemente de la estrategia utilizada.
+Puede existir un empate cuando, en todas las rondas, la moneda asignada a Mateo tiene el mismo valor que la moneda elegida por Sophia. Sin embargo, el enunciado indica que se desestimemos el caso particular en el que hay una cantidad par de monedas de igual valor, ya que en esa situación ambos jugadores reciben la misma cantidad de monedas del mismo valor y el empate se produce independientemente de la estrategia utilizada.
 
 Descartando dicho caso, la estrategia greedy garantiza que Sophia obtiene un puntaje estrictamente mayor que Mateo y, por lo tanto, siempre gana.
 
@@ -43,4 +43,4 @@ También se calculó el error cuadrático total del ajuste, cuyo valor fue \(4.9
 
 [Gráfico: error-cuadrático.png]
 
-En conclusión, el comportamiento observado experimentalmente resulta consistente con la complejidad temporal teórica O(n).
+En conclusión, el comportamiento observado experimentalmente resulta consistente con la complejidad temporal teórica O(n)..
