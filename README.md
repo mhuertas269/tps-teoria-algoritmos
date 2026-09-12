@@ -3,7 +3,7 @@
 ## Integrantes
 
 -
--
+- Manuel Amas - 114449
 - Magali Karen Huertas - 111173
 
 ## Ejecución
